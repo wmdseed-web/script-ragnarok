@@ -1,0 +1,261 @@
+prontera,139,165,4	script	ช่างทำหมวก LAB	4_M_DEATH,{
+	disable_items;
+	mes "[ช่างทำหมวก LAB]";
+	mes "ข้าคือผู้คุมวิญญาณสถิตในหมวกอาถรรพ์...";
+	mes "เจ้าต้องการสิ่งใดจากข้า?";
+	next;
+	
+	switch( select( "- ทำหมวก Lab Headgear", "- เสริมพลังหมวก (Enchant)", "- รีเซ็ตออฟชั่น (Reset)", "- ข้อมูลเพิ่มเติม", "- ยกเลิก" ) ) {
+	case 1:
+		goto L_Craft;
+	case 2:
+		goto L_Enchant;
+	case 3:
+		goto L_Reset;
+	case 4:
+		goto L_Info;
+	case 5:
+		mes "[ช่างทำหมวก LAB]";
+		mes "แล้วพบกันใหม่...";
+		close;
+	}
+
+L_Craft:
+	mes "[ช่างทำหมวก LAB]";
+	mes "เจ้าต้องการสร้างหมวกใบไหน?";
+	next;
+	setarray .@item_name$[0],
+		getitemname(18971),	// Old_Rune_Circlet
+		getitemname(18972),	// Old_Mitra
+		getitemname(18973),	// Old_Driver_Band_R
+		getitemname(18974),	// Old_Driver_Band_Y
+		getitemname(18975),	// Old_Shadow_Handicraft
+		getitemname(18976),	// Old_Minstrel_Song_Hat
+		getitemname(18977),	// Old_Midas_Whisper
+		getitemname(18978),	// Old_Magic_Stone_Hat
+		getitemname(18979),	// Old_Blazing_Soul
+		getitemname(18980),	// Old_Wind_Whisper
+		getitemname(18981),	// Old_Dying_Swan
+		getitemname(18984),	// Old_Camo_RabbitHood
+		getitemname(18982),	// Old_Circlet_Of_Bone
+		getitemname(18983),	// Old_Protect_Of_Crown
+		getitemname(20749);	// Cloak of the Fallen Soldier[1]
+
+	while(true) {
+		if (checkweight(2677,5) == 0) {
+			mes "[ช่างทำหมวก LAB]";
+			mes "กระเป๋าเจ้าหนักเกินไป...";
+			close;
+		}
+		
+		.@s = select( "กลับไปเมนูหลัก", .@item_name$[0], .@item_name$[1], .@item_name$[2], .@item_name$[3], .@item_name$[4], .@item_name$[5], .@item_name$[6], .@item_name$[7], .@item_name$[8], .@item_name$[9], .@item_name$[10], .@item_name$[11], .@item_name$[12], .@item_name$[13], .@item_name$[14] + "[1]" );
+		
+		if (.@s == 1) return;
+		
+		// Map menu selection to item IDs and calls S_Make
+		switch(.@s) {
+			case 2: callsub S_Make,18971,19961,6814; break;
+			case 3: callsub S_Make,18972,19962,6819; break;
+			case 4: callsub S_Make,18973,19963,6815; break;
+			case 5: callsub S_Make,18974,19964,6815; break;
+			case 6: callsub S_Make,18975,19965,6816; break;
+			case 7: callsub S_Make,18976,19966,6818; break;
+			case 8: callsub S_Make,18977,19967,6815; break;
+			case 9: callsub S_Make,18978,19968,6817; break;
+			case 10: callsub S_Make,18979,19969,6819; break;
+			case 11: callsub S_Make,18980,19970,6817; break;
+			case 12: callsub S_Make,18981,19971,6818; break;
+			case 13: callsub S_Make,18984,19974,6818; break;
+			case 14: callsub S_Make,18982,19973,6816; break;
+			case 15: callsub S_Make,18983,19972,6814; break;
+			case 16: callsub S_Make,20749,20748,6471,true; break;
+		}
+		continue;
+	}
+
+L_Enchant:
+	mes "[ช่างทำหมวก LAB]";
+	mes "Krrr... hehe... ส่ง Grudge มาซะ... ข้าจะมอบพลังพิเศษให้หมวกของเจ้า...";
+	mes "^FF0000*หากเจ้ามี Cursed Fragment เจ้าสามารถ Enchant พลังในหมวก Old Helmet ได้*^000000";
+	next;
+	.@equip_id = getequipid(EQI_HEAD_TOP);
+	switch(.@equip_id) {
+		case 18971: case 18972: case 18973: case 18974: case 18975: case 18976: case 18977:
+		case 18978: case 18979: case 18980: case 18981: case 18982: case 18983: case 18984:
+			break;
+		default:
+			mes "[ช่างทำหมวก LAB]";
+			mes "เจ้าไม่มีหมวกที่ข้าต้องการ...";
+			mes "^FF0000*การ Enchant ด้วย Cursed Fragment สามารถทำได้กับ Old Helmet เท่านั้น*^000000";
+			close;
+	}
+
+	.@requirement = 10;
+	setarray .@card[0], getequipcardid(EQI_HEAD_TOP,0), getequipcardid(EQI_HEAD_TOP,1), getequipcardid(EQI_HEAD_TOP,2), getequipcardid(EQI_HEAD_TOP,3);
+	.@refine = getequiprefinerycnt(EQI_HEAD_TOP);
+
+	if (.@card[3] == 0) {
+		.@slot = 3;
+		mes "เจ้าต้องการเริ่มจากก้าวแรกไหม? ลองวัดดวงดูสิ... Kr..hehe...";
+		mes "^FF0000*ทดลอง Enchant ช่องที่ 4 สุ่ม Status 1 ใน 6 ชนิด*^000000";
+	} else if (.@card[2] == 0) {
+		.@slot = 2;
+		mes "Kr... hehe... ชอบพลังแรกไหมล่ะ?...";
+		mes "^FF0000*ทดลอง Enchant ช่องที่ 3 สุ่ม Status 1 ใน 6 ชนิด*^000000";
+	} else if (.@card[1] == 0) {
+		.@slot = 1;
+		mes "Kr... hehe... การรวมพลังที่ยิ่งใหญ่ที่สุดกำลังจะเริ่มขึ้น...";
+		mes "^FF0000*ทดลอง Enchant ช่องที่ 2 หากได้รับ Enchant พิเศษจะสามารถอัปเกรดระดับได้*^000000";
+	} else {
+		// Enchant Leveling Logic
+		switch(.@card[1]) {
+			case 29061: case 29071: case 29081: case 29091: case 29101: case 29111: .@requirement = 20; .@enchant_level = 1; .@enchant_rate = 80; break;
+			case 29062: case 29072: case 29082: case 29092: case 29102: case 29112: .@requirement = 40; .@enchant_level = 2; .@enchant_rate = 70; break;
+			case 29063: case 29073: case 29083: case 29093: case 29103: case 29113: .@requirement = 50; .@enchant_level = 3; .@enchant_rate = 50; break;
+			case 29064: case 29074: case 29084: case 29094: case 29104: case 29114: .@requirement = 70; .@enchant_level = 4; .@enchant_rate = 20; break;
+			case 29065: case 29075: case 29085: case 29095: case 29105: case 29115: .@requirement = 100; .@enchant_level = 5; .@enchant_rate = 20; break;
+			case 29066: case 29076: case 29086: case 29096: case 29106: case 29116: .@requirement = 150; .@enchant_level = 6; .@enchant_rate = 20; break;
+			case 29067: case 29077: case 29087: case 29097: case 29107: case 29117: .@requirement = 250; .@enchant_level = 7; .@enchant_rate = 20; break;
+			case 29068: case 29078: case 29088: case 29098: case 29108: case 29118: .@requirement = 500; .@enchant_level = 8; .@enchant_rate = 20; break;
+			case 29069: case 29079: case 29089: case 29099: case 29109: case 29119: .@requirement = 1000; .@enchant_level = 9; .@enchant_rate = 20; break;
+			default:
+				mes "ข้าไม่สามารถเสริมพลังให้ได้มากกว่านี้แล้ว...";
+				close;
+		}
+		.@slot = 999;
+		mes "ยกระดับเลเวล " + (.@enchant_level + 1) + " หรือไม่? หากเจ้าล้มเหลว พลังจะลดระดับลง...";
+	}
+	next;
+	mes "[ช่างทำหมวก LAB]";
+	mes "เจ้าต้องใช้ ^FF0000" + .@requirement + " Cursed Fragment^000000 เจ้ามีพอหรือไม่?... kk... kk...";
+	next;
+	if (select( "จ่ายค่าธรรมเนียน", "ยกเลิก" ) == 2) close;
+	
+	if (countitem(23016) < .@requirement) {
+		mes "[ช่างทำหมวก LAB]";
+		mes "เจ้าไม่มี Cursed Fragments เพียงพอ...";
+		close;
+	}
+	
+	delitem 23016, .@requirement;
+	progressbar "000000",1;
+	
+	// Implementation of Enchantment Rand Logic (Slot 4/3)
+	if (.@slot == 3 || .@slot == 2) {
+		setarray .@enchant[0],4700,4701,4702,4703,4704,4710,4711,4712,4713,4714,4720,4721,4722,4723,4724,4730,4731,4732,4733,4734,4740,4741,4742,4743,4744,4750,4751,4752,4753,4754;
+		.@card[.@slot] = .@enchant[ rand( getarraysize(.@enchant) ) ];
+	} else if (.@slot == 1) {
+		setarray .@enchant[0],4703,4704,4713,4714,4723,4724,4733,4734,4743,4744,4753,4754,29061,29071,29081,29091,29101,29111;
+		.@card[1] = .@enchant[ rand( getarraysize(.@enchant) ) ];
+	} else if (.@slot == 999) {
+		if (.@enchant_rate > rand(100)) .@level_dt = 1; else .@level_dt = -1;
+		.@enchant_level += .@level_dt;
+		.@card[1] += .@level_dt;
+		if (.@enchant_level < 1) {
+			specialeffect2 EF_SUI_EXPLOSION;
+			mes "[ช่างทำหมวก LAB]";
+			mes "พลังเกิดความแปรปรวน... โชคดีที่มันไม่ระเบิดไป";
+			close;
+		}
+	}
+	
+	delequip EQI_HEAD_TOP;
+	getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+	
+	if (.@level_dt == -1) {
+		specialeffect2 EF_SUI_EXPLOSION;
+		mes "[ช่างทำหมวก LAB]";
+		mes "ความล้มเหลวทำให้พลังลดระดับลงหนึ่งขั้น...";
+		close;
+	}
+	specialeffect2 EF_FIREHIT;
+	mes "[ช่างทำหมวก LAB]";
+	mes "สำเร็จแล้ว! พลังในหมวกของเจ้าแข็งแกร่งขึ้น";
+	close;
+
+L_Reset:
+	mes "[ช่างทำหมวก LAB]";
+	mes "เจ้าไม่ชอบพลังนี้งั้นหรือ? นำ 10 Sentimental Fragment มาให้ข้า แล้วข้าจะล้างพลังนั่นให้เอง...";
+	next;
+	if (select( "ยกเลิก", "ยอมรับ" ) == 1) close;
+	
+	if (countitem(22687) < 10) {
+		mes "[ช่างทำหมวก LAB]";
+		mes "เจ้ามี Sentimental Fragment ไม่เพียงพอ...";
+		close;
+	}
+	
+	delitem 22687, 10;
+	progressbar "000000",2;
+	specialeffect2 EF_FIREHIT;
+	
+	.@equip_id = getequipid(EQI_HEAD_TOP);
+	.@refine = getequiprefinerycnt(EQI_HEAD_TOP);
+	.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+	
+	delequip EQI_HEAD_TOP;
+	getitem2 .@equip_id,1,1,.@refine,0,.@card0,0,0,0;
+	mes "[ช่างทำหมวก LAB]";
+	mes "พลังถูกลบล้างไปแล้ว...";
+	close;
+
+L_Info:
+	mes "[ช่างทำหมวก LAB]";
+	mes "การ Enchant จะเรียงลำดับจากช่อง 4, 3, 2";
+	mes "- ช่อง 4 และ 3 ใช้ 10 Cursed Fragment";
+	mes "- ช่อง 2 ใช้ 10 Cursed Fragment (สุ่มได้รับ Status หรือ Enchant พิเศษ)";
+	mes "- หากได้รับ Enchant พิเศษในช่อง 2 สามารถอัปเกรดเลเวลได้สูงสุด 10 ขั้น";
+	mes "- การ Reset ใช้ 10 Sentimental Fragment";
+	close;
+
+S_Make:
+	.@reward_id = getarg(0);
+	.@equipment_req = getarg(1);
+	.@item_misc_req = getarg(2);
+	if (getarg(3,0)) {
+		setarray .@string$[0], "chill", "cloak";
+		setarray .@material[0],20,100;
+	} else {
+		setarray .@string$[0], "soul", "hat";
+		setarray .@material[0],1,20;
+	}
+	next;
+	mes "[ช่างทำหมวก LAB]";
+	mes "ในการสร้าง ^006400" + getitemname(.@reward_id) + "^000000...";
+	mes "เจ้าต้องนำ " + .@string$[0] + " และ " + .@string$[1] + " มาให้ข้า...";
+	next;
+	mes "[ช่างทำหมวก LAB]";
+	mes "ข้าต้องการ 1 " + getitemname(.@equipment_req) + ", " + .@material[0] + " " + getitemname(.@item_misc_req) + " และ " + .@material[1] + " " + getitemname(6820);
+	mes "หากเจ้ามีวัตถุดิบ 5 เท่า โอกาสสำเร็จจะเป็น 100%";
+	next;
+	switch( select( "กลับไป", "ใช้ " + .@material[1] + " energy (โอกาสสุ่ม)", "ใช้ " + (.@material[1] * 5) + " energy (สำเร็จ 100%)" ) ) {
+	case 1: return;
+	case 2: .@rate = 1; break;
+	case 3: .@rate = 5; break;
+	}
+	
+	if (countitem(.@equipment_req) < 1 || countitem(.@item_misc_req) < (.@material[0] * .@rate) || countitem(6820) < (.@material[1] * .@rate)) {
+		mes "[ช่างทำหมวก LAB]";
+		mes "วัตถุดิบไม่พอสำหรับการสร้าง...";
+		return;
+	}
+	
+	progressbar "000000",5;
+	delitem .@equipment_req, 1;
+	delitem .@item_misc_req, (.@material[0] * .@rate);
+	delitem 6820, (.@material[1] * .@rate);
+
+	if (.@rate == 5 || (20 * .@rate) > rand(100)) {
+		specialeffect EF_BLACKBODY;
+		mes "[ช่างทำหมวก LAB]";
+		mes "นี่คือ ^006400" + getitemname(.@reward_id) + "^000000 ของเจ้า...";
+		getitem .@reward_id,1;
+	} else {
+		mes "[ช่างทำหมวก LAB]";
+		mes "การหลอมล้มเหลว...";
+	}
+	next;
+	mes "- ข้าถูกโจมตีด้วยคลื่นพลังวิญญาณอย่างรุนแรง -";
+	next;
+	return;
+}
