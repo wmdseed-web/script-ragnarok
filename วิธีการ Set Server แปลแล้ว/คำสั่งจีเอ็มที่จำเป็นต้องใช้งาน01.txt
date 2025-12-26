@@ -1,0 +1,277 @@
+@reloadatcommand รีโหลดการตั้งค่าคำสั่งGMไหม่
+@reloadbattleconf รีโหลดการตั้งค่าbattleไหม่
+@reloadstatusdb รีโหลดการตั้งค่าสเตตัสไหม่รวมถึงการตั้งค่าตี+ด้วย
+@reloadpcdb รีโหลดสเตตัสพ๊อยไหม่
+@reloaditemdb รีโหลดไอเทมDBไหม่
+@reloadmobdb รีโหลดมอนเตอร์DBไหม่
+@reloadquestdb รีโหลดเควสDBไหม่
+@reloadscript รีโหลดสคลิปไหม่
+@battleignore จะไม่โดนโจมตีการมอนเตอร์และผู้เล่น
+@block ระงับไอดี
+@unblock ยกเลิกระงับไอดี
+@cash เพิ่มแคช
+@zeny เพิ่มเซนี่
+@allstat เพิ่มสเตตัสทุกช่อง
+@itemreset ลบไอเทมทั้งหมดในตัวทิ้ง
+@refine ตีบวกไอเทม
+@party สร้างปาตี้
+@guild สร้างกิล
+@doom ฆ่าทุกคนยกเว้นGM
+@doommap ฆ่าทุกคนในmapที่ระบุยกเว้นGM
+@revive ชุบผู้เล่น
+@raise ชุบชีวิตทุกคน
+@raisemap ชุบชีวิตทุกคนในmapที่ระบุ
+@guildrecall เรียกกิลที่ระบุมาหาเรา
+@partyrecall เรียกปารตี้ระบุมาหาเรา
+@recall - เรียกคนที่ระบุชื่อระบุมาหาเรา
+@recallall เรียกทุกคนในเซฟเวอร์มาหา(เครื่องไม่แรงเน๊ตไม่แรงอย่าใช้เดียวค้าง)
+@inall เปิดให้กระซิบทุกคน
+@exall ปิดไม่ให้ทุกคนกระซิบ
+@kick เตะคนที่ระบุออกจากเซฟ
+@kickall แตะทุกคนในเซิพเวอร์ออกจากเซฟ
+@mapexit เตะทุกคนในเซิพเวอร์ออกจากเซฟและปิด Map
+@repairall ซ่อมไอเทมที่เสียหาย
+@speed เพิ่มความเร็วการเดิน
+@effect เรียกเอฟเฟก
+@dropall ทิ้งของทุกอย่างในตัวลงพื้น
+@summon เสกมอนเตอร์มาเป็นลูกน้อง
+@killmonster2 ฆ่ามอนเตอร์ทุกตัวในmapที่ยืนอยู่
+@killmonster [ชื่อmap] ฆ่ามอนเตอร์ทุกตัวในmapที่ระบุ
+@broadcast คำสั่งประกาศข้อความจะเปลี่ยนสีเหลือง
+@who ดูรายชื่อคนที่ออนไลน์ทั้งหมดรวมถึงGMด้วย
+@whogm ดูรายชื่อGMที่ออนไลน์อยู่
+@where [ชื่อตัวละครที่ต้องการ] บอกที่อยู่ตัวละครที่ระบุ
+@agitstart เปิดกิลวอFE
+@agitend ปิดกิลวอFE
+@agitstart2 เปิดกิลวอSE
+@agitend2 ปิดกิลวอSE
+@rates เช็คการดรอปของทั้งหมด
+@time ดูเวลาเซฟ
+@pvpon เปิดpvp
+@pvpoff ปิดpvp
+@gvgon เปิดgvg
+@gvgoff ปิดgvg
+@skillon เปิดให้ใช้สกิลได้ในแผนที่
+@skilloff ปิดไม่ให้ใช้สกิลในแผนที่
+@mobinfo ดูข้อมูลมอนเตอร์
+@iteminfo ดูข้อมูลไอเทม
+@autoloot เก็บของออโต้
+@stats ดูสเตตัส
+@storage เปิดคลังเก็บของ
+@gstorage เปิดคลังเก็บของกิล
+@auction เปิดฝากขาย
+@alive ชุบชีวิตตัวเอง
+@die ฆ่าตัวตาย
+@heal ฮิว
+@blvl เพิ่มเลเวล
+@jlvl เพิ่มจ๊อบเลเวล
+@allskill เรียนรู้ทุกสกิล
+@glvl อัพเลเวลกิล
+@monster เสกมอน
+@monstersmall เสกมอนขยาดเล็ก
+@monsterbig เสกมอนขนาดเไหญ่
+@summon เสกมอนเป็นลูกน้อง
+@clone โคลนคนเล่น
+@slaveclone โคลคนเล่นเป็นลูกน้อง
+@evilclone โคลนผู้เล่นมาตีเรา
+//////////////
+@item2 clip_ 2
+คุณได้รับ Clip[1] 2 ea
+
+@item2 4145 2
+คุณได้รับ Berzebub Card 2 ea
+
+พอใส่การ์ดใน Clip[1] ทั้ง 2 อันแล้วก็สวม
+แล้วก็
+@refine 8 10
+@refine 128 10
+ถ้าอยาก +10 ที่สวมไว้ทั้งตัวก็ @refine 0 10
+///////////////
+
+Energy Debris 6820
+
+@go
+@item <ชื่อไอเทม/รหัสไอเทม>
+@item2 <ชื่อไอเทม/รหัสไอเทม> <จำนวน> <0=ไม่ส่องของ1=ส่องของไห้> <ตีบวก> <0=ไอเทมไม่เสียหาย1=ไอเทมเสียหาย> <การ์ดถ้าต้องการให้ใส่0> <การ์ดถ้าต้องการให้ใส่0> <การ์ดถ้าต้องการให้ใส่0> <การ์ดถ้าต้องการให้ใส่0>
+@item2 610026 1 1 +20 0 1 1 1 1
+
+@item2 610033 1 1 +20 0 0 0 0 0
+@item2 18982 1 1 +20 0 0 0 0 0
+
+@guildspy มองเห็นคำพูดในกิลคนอื่น
+@partyspy มองเห็นคำพูดในปาตี้คนอื่น
+@hide ซ่อนตัว
+@save เซฟจุดที่ยืนอยู่
+@load กลับจุดเซฟ
+@go [1-30]วาปตามเมื่องต่างๆ
+@warp [ชื่อmap พิกัดx พิกัดy] วาปไปตำแหน่งที่ระบุ
+@goto [ชื่อตัวละคร] วาปไปหาตัวละครที่ระบุ
+@costume Summer คอสตูมซัมเมอร์
+@costume Wedding คอสตูมแต่งงาน
+@costume Xmas คอสตูมคริสมาส
+@costume Hanbok คอสตูมอันโบก
+@costume Oktoberfest คอสตูมคาเฟ่
+คำสั้งช่วยเหลือคนเล่น
+#cash เพิ่มแคชให้คนเล่นชื่อที่ระบุ
+#zeny เพิ่มเซนี่ให้คนเล่นชื่อที่ระบุ
+#job เปลี่ยนอาชีพให้คนเล่นที่ระบุ
+@bodystyle 1
+
+@job เปลี่ยนอาชีพ
+
+
+ไอดีทุกอาชีพ
+Job_Novice	0
+Job_Swordman	1
+Job_Mage	2
+Job_Archer	3
+Job_Acolyte	4
+Job_Merchant	5
+Job_Thief	6
+Job_Knight	7
+Job_Priest	8
+Job_Wizard	9
+Job_Blacksmith	10
+Job_Hunter	11
+Job_Assassin	12
+Job_Knight2	13
+Job_Crusader	14
+Job_Monk	15
+Job_Sage	16
+Job_Rogue	17
+Job_Alchem	18
+Job_Alchemist	18
+Job_Bard	19
+Job_Dancer	20
+Job_Crusader2	21
+Job_Wedding	22
+Job_SuperNovice	23
+Job_Gunslinger	24
+Job_Ninja	25
+Job_Xmas	26
+Job_Summer	27
+
+Job_Novice_High	4001
+Job_Swordman_High	4002
+Job_Mage_High	4003
+Job_Archer_High	4004
+Job_Acolyte_High	4005
+Job_Merchant_High	4006
+Job_Thief_High	4007
+Job_Lord_Knight	4008
+Job_High_Priest	4009
+Job_High_Wizard	4010
+Job_Whitesmith	4011
+Job_Sniper	4012
+Job_Assassin_Cross	4013
+Job_Lord_Knight2	4014
+Job_Paladin	4015
+Job_Champion	4016
+Job_Professor	4017
+Job_Stalker	4018
+Job_Creator	4019
+Job_Clown	4020
+Job_Gypsy	4021
+Job_Paladin2	4022
+
+Job_Baby	4023
+Job_Baby_Swordman	4024
+Job_Baby_Mage	4025
+Job_Baby_Archer	4026
+Job_Baby_Acolyte	4027
+Job_Baby_Merchant	4028
+Job_Baby_Thief	4029
+Job_Baby_Knight	4030
+Job_Baby_Priest	4031
+Job_Baby_Wizard	4032
+Job_Baby_Blacksmith	4033
+Job_Baby_Hunter	4034
+Job_Baby_Assassin	4035
+Job_Baby_Knight2	4036
+Job_Baby_Crusader	4037
+Job_Baby_Monk	4038
+Job_Baby_Sage	4039
+Job_Baby_Rogue	4040
+Job_Baby_Alchem	4041
+Job_Baby_Alchemist	4041
+Job_Baby_Bard	4042
+Job_Baby_Dancer	4043
+Job_Baby_Crusader2	4044
+Job_Super_Baby	4045
+
+Job_Taekwon	4046
+Job_Star_Gladiator	4047
+Job_Star_Gladiator2	4048
+Job_Soul_Linker	4049
+
+Job_Gangsi	4050
+Job_Death_Knight	4051
+Job_Dark_Collector	4052
+
+Job_Rune_Knight	4054
+Job_Warlock	4055
+Job_Ranger	4056
+Job_Arch_Bishop	4057
+Job_Mechanic	4058
+Job_Guillotine_Cross	4059
+
+Job_Rune_Knight_T	4060
+Job_Warlock_T	4061
+Job_Ranger_T	4062
+Job_Arch_Bishop_T	4063
+Job_Mechanic_T	4064
+Job_Guillotine_Cross_T	4065
+
+Job_Royal_Guard	4066
+Job_Sorcerer	4067
+Job_Minstrel	4068
+Job_Wanderer	4069
+Job_Sura	4070
+Job_Genetic	4071
+Job_Shadow_Chaser	4072
+
+Job_Royal_Guard_T	4073
+Job_Sorcerer_T	4074
+Job_Minstrel_T	4075
+Job_Wanderer_T	4076
+Job_Sura_T	4077
+Job_Genetic_T	4078
+Job_Shadow_Chaser_T	4079
+
+Job_Rune_Knight2	4080
+Job_Rune_Knight_T2	4081
+Job_Royal_Guard2	4082
+Job_Royal_Guard_T2	4083
+Job_Ranger2	4084
+Job_Ranger_T2	4085
+Job_Mechanic2	4086
+Job_Mechanic_T2	4087
+
+Job_Baby_Rune	4096
+Job_Baby_Warlock	4097
+Job_Baby_Ranger	4098
+Job_Baby_Bishop	4099
+Job_Baby_Mechanic	4100
+Job_Baby_Cross	4101
+Job_Baby_Guard	4102
+Job_Baby_Sorcerer	4103
+Job_Baby_Minstrel	4104
+Job_Baby_Wanderer	4105
+Job_Baby_Sura	4106
+Job_Baby_Genetic	4107
+Job_Baby_Chaser	4108
+
+Job_Baby_Rune2	4109
+Job_Baby_Guard2	4110
+Job_Baby_Ranger2	4111
+Job_Baby_Mechanic2	4112
+
+Job_Super_Novice_E	4190
+Job_Super_Baby_E	4191
+
+Job_Kagerou	4211
+Job_Oboro	4212
+Job_Rebellion	4215
+
+@reloadbattleconf
+@reloadscript
